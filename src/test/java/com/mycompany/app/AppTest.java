@@ -39,23 +39,42 @@ public class AppTest
         assertTrue( true );
     }
 
-    public void testFound() {
+    public void testEmptyString() {
         ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
-        assertTrue(new App().search(array, 4));
+        assertEquals(new App().sifrele(array,array,"a",5),"bbbbbb");
+        // bir kaydır 5 kere genişlet
     }
 
-    public void testNotFound() {
-        ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
-        assertFalse(new App().search(array, 5));
+    public void testDoesEmptySpacesCount() {
+        ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1));
+        assertNotSame(new App().sifrele(array,array,"aa bb",1),"bb cc");
+        //boşlukları geçtiği için eşit çıkmadılar
     }
 
-    public void testEmptyArray() {
+    public void testExpectsIndexOutofException() {
         ArrayList<Integer> array = new ArrayList<>();
-        assertFalse(new App().search(array, 1));
+        try{
+            new App().sifrele(array,array,"aabb",5);
+        }catch (IndexOutOfBoundsException e){
+
+        }
+
     }
 
-    public void testNull() {
-        assertFalse(new App().search(null, 1));
+    public void testExpectsNullPointerExceptionIfOneOftheArrayEqualsNull() {
+        ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1));
+        try{
+            new App().sifrele(array, null,"asd",1);
+        }catch (NullPointerException e){
+
+        }
+
+    }
+
+    public void testExpectsEmptyResultIfMessageBoxIsEmpty() {
+        ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1));
+        assertEquals(new App().sifrele(array,array,"",1),"");
+        //şifrelenecek metnin boş gelmesi
     }
 
 }

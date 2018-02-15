@@ -1,16 +1,37 @@
 <title>My application deployed automatically</title>
-  <h1>Hello, World!</h1>
-    Result is {{result}}
+  <h1>Hello World</h1>
+
 </br>
-    Yenilikler
 
 
+
+<p>Dizi 1 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Dizi 2 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Şifrelenecek Metin(string)  &nbsp; &nbsp; &nbsp; &nbsp; Metni Genişlet(int)</p>
   <form action="compute" method="post">
         <textarea name="input1" rows="10" cols="30"></textarea>
 	<textarea name="input2" rows="10" cols="30"></textarea>
 	<textarea name="input3" rows="10" cols="30"></textarea>
-	<textarea name="input4" rows="10" cols="30"></textarea>
+      <textarea name="input5" rows="10" cols="30"></textarea>
+	<textarea readonly name="input4" rows="10" cols="30">Şifreli metin = {{sonuc}}</textarea>
         <br>
+      <br>
         <input type="submit">
-  </form>
 
+
+  </form>
+<h3 style="color: black">Algoritmanın Birinci Adımı</h3>
+<br>
+<p> Program birinci ve ikinci textarealara konulan dizilerden ilk olarak birinci arayin birinci elemanını alır </p>
+<p>şifrelenecek metinin ilk karakteri ile dizideki sayıyı toplar</p>
+<br>
+<h3 style="color: black">Algoritmanın İkinci Adımı</h3>
+<br>
+<p>Program ikinci olarak, ikinci arrayin ilk elemanını ve şifrelenecek metnin 2. karakterini alıp kaydırır</p>
+<br>
+<h3 style="color: black">Algoritmanın Üçüncü Adımı</h3>
+<br>
+<p>Yukarıdaki adımlar birer artarak devam eder, arrayler sonlanırsa arayin başına geri döner. Şifrelenecek metin</p>
+<p>bitince dördüncü alana girilen sayı kadar şifreli metni yanyana yazarak genişletir ve son alandaki textboxa şifreli metni yazar</p>
+
+<br>
+<br>
+<p>Büyük dizi elemanlarının metni ascii den çıkarması gibi durumlar unit test kısmında case olarak eklenecektir.</p>

@@ -66,15 +66,17 @@ public class App
 
 
 
-            String input4 = req.queryParams("input4").replaceAll("\\s","");
+            String input4 = req.queryParams("input5").replaceAll("\\s","");
+            int inputdort= Integer.parseInt(input4);
 
 
-            String sifreliMetin = sifrele(inputList,inputList2,input3,input4);
+            String sifreliMetin = sifrele(inputList,inputList2,input3,inputdort);
 
            System.out.println(sifreliMetin);
 
+
             Map map = new HashMap();
-            map.put("result", sifreliMetin);
+            map.put("sonuc", sifreliMetin);
             return new ModelAndView(map, "compute.mustache");
         }, new MustacheTemplateEngine());
 
@@ -88,8 +90,8 @@ public class App
                 new MustacheTemplateEngine());
     }
 
-    public static String sifrele(ArrayList<Integer> bir, ArrayList<Integer> iki, String mesaj, String sonuc){
-        sonuc="";
+    public static String sifrele(ArrayList<Integer> bir, ArrayList<Integer> iki, String mesaj, int carp){
+        String sonuc="";
         //birinci listeyi al
         //ikinci listeyi al
         // mesajın karakterlerine sırasıyla ilk birincinin birinci değerini topla sonra ikincinin birinci değerini topla
@@ -106,7 +108,7 @@ public class App
         char c;
         for(int i=0;i<mesaj.length();i++){
             c=mesaj.charAt(i);
-            if(c%2==0){
+            if(i%2==0){
                 if(counter1==birinciArrayUzunlugu){
                     counter1=0;
                 }
@@ -120,12 +122,16 @@ public class App
                 if(counter2==ikinciArrayUzunlugu){
                     counter2=0;
                 }
-                int deneme=bir.get(counter2);
+                int deneme=iki.get(counter2);
                 c += deneme;
 
                 sonuc+=c ;
                 counter2++;
             }
+        }
+        String kopyaSonuc=sonuc;
+        for(int i=0;i<carp;i++){
+            sonuc+=kopyaSonuc;
         }
 
         return sonuc;
